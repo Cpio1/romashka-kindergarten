@@ -8,6 +8,13 @@ import { ArrowIcon } from "./ui/Icons";
 import { Photo } from "./ui/Photo";
 import { Reveal } from "./ui/Reveal";
 
+// Ерекшеленген сөздердің жанындағы кішкентай ромашкалар (сөзге байланған — мәтінмен бірге жылжиды)
+const SUBTITLE_DAISIES = [
+  { size: 15, className: "-right-2.5 -top-3", delay: 750, offset: 1.2 },
+  { size: 13, className: "-bottom-2.5 -left-2", delay: 850, offset: 2.6, motion: "float" as const },
+  { size: 19, className: "-right-4 -top-3.5", delay: 950, offset: 0.4 },
+];
+
 export function Hero({ photo }: { photo: string | null }) {
   const { t } = useLanguage();
 
@@ -38,7 +45,18 @@ export function Hero({ photo }: { photo: string | null }) {
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mt-4 font-display text-lg font-semibold text-ink-soft sm:text-xl">{t.hero.subtitle}</p>
+            <p className="relative mx-auto mt-4 max-w-[26rem] text-balance font-display text-lg font-bold leading-snug text-ink-soft sm:text-xl lg:mx-0">
+              {t.hero.subtitle.split("*").map((part, i) => {
+                if (i % 2 === 0) return part;
+                const daisy = SUBTITLE_DAISIES[(i - 1) / 2];
+                return (
+                  <span key={i} className="relative bg-[linear-gradient(transparent_62%,#ede7fe_62%)] px-0.5 text-violet">
+                    {part}
+                    {daisy && <Daisy {...daisy} />}
+                  </span>
+                );
+              })}
+            </p>
           </Reveal>
 
           <Reveal delay={240}>
