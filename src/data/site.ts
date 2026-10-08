@@ -11,7 +11,7 @@ export const site = {
   mapQuery: "улица Трудовая 64а, Алматы, Казахстан",
   // Google Drive сілтемесі пайда болғанда осы жерге қойыңыз.
   // Бос болса, «Құжаттарды қарау» батырмасы көрсетілмейді.
-  documentsUrl: "",
+  documentsUrl: "https://drive.google.com/drive/folders/1-8MRP3z4xEHY6W8U2ba1jDwbgV3AaNyu",
 } as const;
 
 export const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&z=16&output=embed`;

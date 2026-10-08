@@ -34,15 +34,25 @@ export function Documents() {
             <p className="relative mx-auto mt-2.5 max-w-md text-[15px] text-white/85 sm:text-base">{hasLink ? t.documents.text : t.documents.pending}</p>
 
             {hasLink && (
-              <a
-                href={site.documentsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[15px] font-semibold text-violet-deep transition-all duration-300 hover:-translate-y-0.5 hover:bg-butter"
-              >
-                {t.documents.button}
-                <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              <div className="relative mt-6 inline-block">
+                <a
+                  href={site.documentsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-2.5 rounded-full bg-white py-2 pl-2 pr-5 text-[15px] font-semibold text-violet-deep shadow-[0_10px_24px_-10px_rgba(30,10,80,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-lilac focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+                >
+                  <span
+                    className="flex h-8 w-8 items-center justify-center bg-violet text-white transition-transform duration-500 group-hover:rotate-12"
+                    style={{ borderRadius: ICON_RADII[0] }}
+                  >
+                    <DocumentIcon className="h-[18px] w-[18px]" />
+                  </span>
+                  {t.documents.button}
+                  <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+                <Daisy size={24} className="-right-3 -top-3" delay={300} offset={1.4} />
+                <Daisy size={16} className="-bottom-2 -left-2" delay={420} offset={2.8} motion="float" />
+              </div>
             )}
           </div>
         </Reveal>
